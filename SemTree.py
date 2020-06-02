@@ -279,7 +279,6 @@ class SemTree:
                                    convert_sem_type_to_string(sem_type)))
         pointer.node.value = value
 
-
     def assignment_check(self, sem_type_var, sem_type_result):
         """
             Проверка, можно ли переменной сем типу sem_type_var присвоить sem_type_result
@@ -576,9 +575,9 @@ class SemTree:
 
         sem_type = None
 
-        if -2**15 <= a <= 2**15 - 1:
+        if -2 ** 15 <= a <= 2 ** 15 - 1:
             sem_type = SemTypes.short
-        elif -2**31 <= a <= 2**31 - 1:
+        elif -2 ** 31 <= a <= 2 ** 31 - 1:
             sem_type = SemTypes.long
         else:
             raise SemError("Число {} превышает допустимый диапазон для типов long и short".format(const))
@@ -607,6 +606,26 @@ class SemTree:
             raise SemError("Неправильное значение для операнда триады. "
                            "Допустимо 'link', 'value'. Получили '{}'".format(val_type))
         triplet.resolve_triplet(value, t)
+
+    def find_all_nodes_in_all_tree(self):
+        res = dict()
+        res['var'] = list()
+        res['func'] = list()
+        pointer = self
+        self.__find_node_in_all_tree(pointer, res)
+        return res
+
+    def __find_node_in_all_tree(self, pointer, res):
+        if pointer.left is not None:
+            self.__find_node_in_all_tree(pointer.left, res)
+        if pointer.right is not None:
+            self.__find_node_in_all_tree(pointer.right, res)
+
+        if pointer.node is not None:
+            if pointer.node.obj_type == ObjectTypes.variable:
+                res['var'].append(pointer.node)
+            else:
+                res['func'].append(pointer.node)
 
     def __add_node(self, node, direction):
         """

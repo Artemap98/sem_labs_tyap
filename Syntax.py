@@ -109,8 +109,8 @@ class SyntaxAnalyzer:
                         self.__stack.append(Element('term', al_lexems.T_EOF))
                     else:
                         raise SyntaxError(self.__get_error_text(
-                            cur_lexem, "Ожидалось: short, long, int. Прочитали: {0}"
-                                .format(cur_lexem['str'])))
+                            cur_lexem,
+                            "Ожидалось: short, long, int. Прочитали: {0}".format(cur_lexem['str'])))
 
                 # <описание д-х или ф-ия>
                 elif cur_element.type == al_rules.DESR_OR_FUNC:
@@ -788,7 +788,7 @@ class SyntaxAnalyzer:
                                            'type': sem_type,
                                            'triplet_type': 'link'})
 
-        return self.__triplets
+        return self.__triplets, self.__sem_tree
 
     def __get_error_text(self, lexem, additional_text=''):
         return 'Ошибка в {0} строке и {1} столбце: {2}' \

@@ -2,29 +2,31 @@ long a = 78;
 
 long func1()
 {
-    short a = 5 + 5 + 12 + 9234 - 434 * 434;
-    short hh = 5 + 5 + 12 + 9234 - 434 * 434;
-    short d = 7;
-    short b = 3;
-    short g = a * d;
-    short y = d * a;
-    d = 10;
-    short c = d * a + (a + b) + a* d;
-    short j = b + a;
-    b = a * d;
+    long a = 5 + 5 + 12 + 9234 ;
+    long hh = 5 - 5 + (12 - 9234);
+    long d = 7;
+    long b = 3;
+    long g = (a + d) + (a + d);
+    long y = a + d;
+    long j = b + a;
+    b = a - d;
     return b;
 }
 
 long func2() {
-    short a = 5;
-    short t =  6;
-    long b = a * t + 2;
-    long y = t * a;
+    long a = 5;
+    long t =  6;
+    long b = (a + t) + 2;
+    a = (a + t) + 2 + 45 + a;
+    long y = a + t;
+    long yy = a + (b + t) + 1;
+    long h = a + t;
+    long j = a + t;
 
-    return 5 * 23 / 23 - 2 * 2;
+    return 5 - 23 + 23 - 2 + 2;
 }
 
 int main(){
-    return func1() + func2();
+    return 1;
 }
 
