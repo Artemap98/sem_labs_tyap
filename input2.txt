@@ -1,35 +1,30 @@
-long f=1;
-long long a=2;
+long a = 78;
 
 long func1()
 {
-    short a = 5 + 2 / 2;
-    f = 6;
-    return 2 + 2 / 5 - 7;
+    short a = 5 + 5 + 12 + 9234 - 434 * 434;
+    short hh = 5 + 5 + 12 + 9234 - 434 * 434;
+    short d = 7;
+    short b = 3;
+    short g = a * d;
+    short y = d * a;
+    d = 10;
+    short c = d * a + (a + b) + a* d;
+    short j = b + a;
+    b = a * d;
+    return b;
 }
 
-short int func2()
-{
-    long long r = 1, t = func1() + func1() / 2 + 3;
-    {
-        long h = 4;
-    }
-    for (r = 1; r < 2; r = r + 1)
-    {
-        short y;
-        for (y = 5; y < 2; y = y + 1)
-        {
-            long r = 255;
-            long b = 1 + func1() + func1() * 2 / 6 + 7;
-        }
-        r = 254;
-    }
-    long long a = 5 + func1() * func1() + 2;
-    return 4;
+long func2() {
+    short a = 5;
+    short t =  6;
+    long b = a * t + 2;
+    long y = t * a;
+
+    return 5 * 23 / 23 - 2 * 2;
 }
 
-int main()
-{
-    long long t = func1() + func2();
+int main(){
+    return func1() + func2();
 }
 

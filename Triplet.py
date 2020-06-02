@@ -63,17 +63,59 @@ class Triplet:
     def first_arg(self):
         return self.__first_arg
 
+    @first_arg.setter
+    def first_arg(self, value):
+        self.__first_arg = value
+
     @property
     def first_arg_type(self):
         return self.__first_arg_type
+
+    @first_arg_type.setter
+    def first_arg_type(self, value):
+        if not isinstance(value, TripletOperandType):
+            raise ValueError("Типом операнды триады может быть только "
+                             "объект класса TripletOperandType")
+        self.__first_arg_type = value
 
     @property
     def second_arg(self):
         return self.__second_arg
 
+    @second_arg.setter
+    def second_arg(self, value):
+        self.__second_arg = value
+
     @property
     def second_arg_type(self):
         return self.__second_arg_type
+
+    @second_arg_type.setter
+    def second_arg_type(self, value):
+        if not isinstance(value, TripletOperandType):
+            raise ValueError("Типом операнды триады может быть только "
+                             "объект класса TripletOperandType")
+        self.__second_arg_type = value
+
+    def deep_equal(self, triplet):
+        if not isinstance(triplet, Triplet):
+            raise ValueError("Сравнивать триады можно только между собой")
+        if self.operation == triplet.operation:
+            if self.first_arg == triplet.first_arg and self.first_arg_type == triplet.first_arg_type and \
+                    self.second_arg == triplet.second_arg and self.second_arg_type == triplet.second_arg_type:
+                return True
+        return False
+
+    def shallow_equal(self, triplet):
+        if not isinstance(triplet, Triplet):
+            raise ValueError("Сравнивать триады можно только между собой")
+        if self.operation == triplet.operation:
+            if self.first_arg == triplet.first_arg and self.first_arg_type == triplet.first_arg_type and \
+                    self.second_arg == triplet.second_arg and self.second_arg_type == triplet.second_arg_type or \
+                    self.first_arg == triplet.second_arg and self.first_arg_type == self.second_arg_type and \
+                    self.second_arg == triplet.first_arg and self.second_arg_type == self.first_arg_type:
+                return True
+        return False
 
     def __str__(self):
         s = "{0}) {1} {2} {3}"
